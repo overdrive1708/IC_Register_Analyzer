@@ -104,6 +104,86 @@
                     </Grid>
                 </StackPanel>
             </GroupBox>
+            <GroupBox Header="ビットマップ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Background="LightGray"/>
+                    <Border BorderBrush="Black" BorderThickness="0,1,1,1" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" Background="LightGray"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="DACセレクトデータ" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" Text="DACデータ" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+                    <Border BorderBrush="Black" BorderThickness="1,0,1,1" Grid.Row="1" Grid.Column="0"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="1"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="2"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="3"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="4"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="5"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="6"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="7"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="8"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="9"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="10"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="11"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="D11" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="D10" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="D9" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="3" Text="D8" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="4" Text="D7" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="5" Text="D6" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="6" Text="D5" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="7" Text="D4" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="8" Text="D3" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="9" Text="D2" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="10" Text="D1" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="11" Text="D0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+                    <Border BorderBrush="Black" BorderThickness="1,0,1,1" Grid.Row="2" Grid.Column="0"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="1"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="2"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="3"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="4"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="5"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="6"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="7"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="8"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="9"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="10"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="11"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding RegisterData.BitMapData[11]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding RegisterData.BitMapData[10]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding RegisterData.BitMapData[9]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding RegisterData.BitMapData[8]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding RegisterData.BitMapData[7]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="5" Text="{Binding RegisterData.BitMapData[6]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="6" Text="{Binding RegisterData.BitMapData[5]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="7" Text="{Binding RegisterData.BitMapData[4]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="8" Text="{Binding RegisterData.BitMapData[3]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="9" Text="{Binding RegisterData.BitMapData[2]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="10" Text="{Binding RegisterData.BitMapData[1]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="11" Text="{Binding RegisterData.BitMapData[0]}"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+                </Grid>
+            </GroupBox>
             <GroupBox Header="設定データ">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">

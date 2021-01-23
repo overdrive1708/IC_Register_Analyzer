@@ -39,10 +39,24 @@ namespace IC_Register_Analyzer.Models
         public string BinString
         {
             get { return _binString; }
-            set { SetProperty(ref _binString, value); }
+            set
+            {
+                SetProperty(ref _binString, value);
+                ConvertBinStringToBitMap();
+            }
         }
         private static readonly string BinString_Init = "000000000000";
         private static readonly int BinString_MaxDigit = 12;
+
+        /// <summary>
+        /// ビットマップデータ
+        /// </summary>
+        private uint[] _bitMapData = new uint[12];
+        public uint[] BitMapData
+        {
+            get { return _bitMapData; }
+            set { SetProperty(ref _bitMapData, value); }
+        }
 
         /// <summary>
         /// ビットマスク
@@ -306,6 +320,26 @@ namespace IC_Register_Analyzer.Models
             DecString = Convert.ToString(workdata, 10);
             BinString = Convert.ToString(workdata, 2);
             BinString = BinString.PadLeft(BinString_MaxDigit, '0');
+        }
+
+        /// <summary>
+        /// 2進数文字列→ビットマップ変換処理
+        /// </summary>
+        private void ConvertBinStringToBitMap()
+        {
+            uint workdata;
+            uint[] workBitMapData = new uint[12];
+
+            // 数値変換
+            workdata = Convert.ToUInt32(BinString, 2);
+
+            for (int cnt = 0; cnt < 12; cnt++)
+            {
+                workBitMapData[cnt] = workdata & 0b1;
+                workdata >>= 1;
+            }
+
+            BitMapData = workBitMapData;
         }
     }
 }
