@@ -75,6 +75,7 @@
     <Compile Include="Models\Model_Register_ADF4111.cs" />
     <Compile Include="Models\Model_RegisterTree.cs" />
     <Compile Include="Models\Model_Register_R2A20178NP.cs" />
+    <Compile Include="Utilities\StringValidationRules.cs" />
     <Compile Include="ViewModels\UserControlADF4111ViewModel.cs" />
     <Compile Include="ViewModels\UserControlADF4111_ABViewModel.cs" />
     <Compile Include="ViewModels\UserControlADF4111_FunctionViewModel.cs" />
@@ -202,5 +203,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

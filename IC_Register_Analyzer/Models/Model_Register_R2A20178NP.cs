@@ -10,11 +10,6 @@ namespace IC_Register_Analyzer.Models
     public class Model_Register_R2A20178NP : BindableBase
     {
         /// <summary>
-        /// 有効ビットマスク(12bit)
-        /// </summary>
-        private static readonly ushort ValidBitMask = 0b111111111111;
-
-        /// <summary>
         /// 16進数文字列
         /// </summary>
         private string _hexString;
@@ -52,8 +47,8 @@ namespace IC_Register_Analyzer.Models
         /// <summary>
         /// ビットマスク
         /// </summary>
-        private static readonly ushort BitMask_DACSelectData = 0b111100000000;
-        private static readonly ushort BitMask_DACData = 0b000011111111;
+        private static readonly uint BitMask_DACSelectData = 0b111100000000;
+        private static readonly uint BitMask_DACData = 0b000011111111;
 
         /// <summary>
         /// DACセレクトデータ
@@ -64,7 +59,7 @@ namespace IC_Register_Analyzer.Models
             get { return _dataDACSelectData; }
             set { SetProperty(ref _dataDACSelectData, value); }
         }
-        private static readonly string DACSelectData_Null = string.Empty;
+        public static readonly string DACSelectData_Null = string.Empty;
         private static readonly string DACSelectData_VOUT1 = "VOUT1選択";
         private static readonly string DACSelectData_VOUT2 = "VOUT2選択";
         private static readonly string DACSelectData_VOUT3 = "VOUT3選択";
@@ -73,15 +68,15 @@ namespace IC_Register_Analyzer.Models
         private static readonly string DACSelectData_VOUT6 = "VOUT6選択";
         private static readonly string DACSelectData_VOUT7 = "VOUT7選択";
         private static readonly string DACSelectData_VOUT8 = "VOUT8選択";
-        private static readonly string DACSelectData_DoNotCare = "Don't care";
-        private static readonly ushort DACSelectData_Bit_VOUT1 = 0b100000000000;
-        private static readonly ushort DACSelectData_Bit_VOUT2 = 0b010000000000;
-        private static readonly ushort DACSelectData_Bit_VOUT3 = 0b110000000000;
-        private static readonly ushort DACSelectData_Bit_VOUT4 = 0b001000000000;
-        private static readonly ushort DACSelectData_Bit_VOUT5 = 0b101000000000;
-        private static readonly ushort DACSelectData_Bit_VOUT6 = 0b011000000000;
-        private static readonly ushort DACSelectData_Bit_VOUT7 = 0b111000000000;
-        private static readonly ushort DACSelectData_Bit_VOUT8 = 0b000100000000;
+        public static readonly string DACSelectData_DoNotCare = "Don't care";
+        private static readonly uint DACSelectData_Bit_VOUT1 = 0b100000000000;
+        private static readonly uint DACSelectData_Bit_VOUT2 = 0b010000000000;
+        private static readonly uint DACSelectData_Bit_VOUT3 = 0b110000000000;
+        private static readonly uint DACSelectData_Bit_VOUT4 = 0b001000000000;
+        private static readonly uint DACSelectData_Bit_VOUT5 = 0b101000000000;
+        private static readonly uint DACSelectData_Bit_VOUT6 = 0b011000000000;
+        private static readonly uint DACSelectData_Bit_VOUT7 = 0b111000000000;
+        private static readonly uint DACSelectData_Bit_VOUT8 = 0b000100000000;
 
         /// <summary>
         /// DACデータ
@@ -92,8 +87,6 @@ namespace IC_Register_Analyzer.Models
             get { return _dataDACData; }
             set { SetProperty(ref _dataDACData, value); }
         }
-        private static readonly string DACData_Null = string.Empty;
-        private static readonly uint DACData_Max_Threshold = 255;
 
         /// <summary>
         /// バインディングデータ：解析データ：DACセレクトデータのリスト
@@ -144,162 +137,73 @@ namespace IC_Register_Analyzer.Models
         /// <summary>
         /// 16進数文字列→その他文字列変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertHexStringToOtherString()
+        public void ConvertHexStringToOtherString()
         {
-            bool ret;
-            ushort workdata;  // 12bitレジスタのため、16bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 入力値が12bitを超えた場合は12bitMAXでクランプ
-                if (Convert.ToUInt16(HexString, 16) <= ValidBitMask)
-                {
-                    workdata = Convert.ToUInt16(HexString, 16);
-                }
-                else
-                {
-                    workdata = ValidBitMask;
-                    HexString = Convert.ToString(ValidBitMask, 16);
-                    HexString = HexString.PadLeft(HexString_MaxDigit, '0');
-                }
+            // 数値変換
+            workdata = Convert.ToUInt32(HexString, 16);
 
-                // 基数変換
-                DecString = Convert.ToString(workdata, 10);
-                BinString = Convert.ToString(workdata, 2);
-                BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-                
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            // 基数変換
+            DecString = Convert.ToString(workdata, 10);
+            BinString = Convert.ToString(workdata, 2);
+            BinString = BinString.PadLeft(BinString_MaxDigit, '0');
         }
 
         /// <summary>
         /// 10進数文字列→その他文字列変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertDecStringToOtherString()
+        public void ConvertDecStringToOtherString()
         {
-            bool ret;
-            ushort workdata;  // 12bitレジスタのため、16bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 入力値が12bitを超えた場合は12bitMAXでクランプ
-                if (Convert.ToUInt16(DecString, 10) <= ValidBitMask)
-                {
-                    workdata = Convert.ToUInt16(DecString, 10);
-                }
-                else
-                {
-                    workdata = ValidBitMask;
-                    DecString = Convert.ToString(workdata, 10);
-                }
+            // 数値変換
+            workdata = Convert.ToUInt32(DecString, 10);
 
-                // 基数変換
-                HexString = Convert.ToString(workdata, 16);
-                HexString = HexString.PadLeft(HexString_MaxDigit, '0');
-                HexString = HexString.ToUpper();
-                BinString = Convert.ToString(workdata, 2);
-                BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            // 基数変換
+            HexString = Convert.ToString(workdata, 16);
+            HexString = HexString.PadLeft(HexString_MaxDigit, '0');
+            BinString = Convert.ToString(workdata, 2);
+            BinString = BinString.PadLeft(BinString_MaxDigit, '0');
         }
 
         /// <summary>
         /// 2進数文字列→その他文字列変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertBinStringToOtherString()
+        public void ConvertBinStringToOtherString()
         {
-            bool ret;
-            ushort workdata;  // 12bitレジスタのため、16bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 入力値が12bitを超えた場合は12bitMAXでクランプ
-                if (Convert.ToUInt16(BinString, 2) <= ValidBitMask)
-                {
-                    workdata = Convert.ToUInt16(BinString, 2);
-                }
-                else
-                {
-                    workdata = ValidBitMask;
-                    BinString = Convert.ToString(workdata, 2);
-                    BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-                }
+            // 数値変換
+            workdata = Convert.ToUInt32(BinString, 2);
 
-                // 基数変換
-                HexString = Convert.ToString(workdata, 16);
-                HexString = HexString.PadLeft(HexString_MaxDigit, '0');
-                HexString = HexString.ToUpper();
-                DecString = Convert.ToString(workdata, 10);
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
-        }
-
-        /// <summary>
-        /// 設定データクリア処理
-        /// </summary>
-        public void ClearSettings()
-        {
-            DACSelectData = DACSelectData_Null;
-            DACData = DACData_Null;
+            // 基数変換
+            HexString = Convert.ToString(workdata, 16);
+            HexString = HexString.PadLeft(HexString_MaxDigit, '0');
+            DecString = Convert.ToString(workdata, 10);
         }
 
         /// <summary>
         /// 設定数値→設定データ変換処理
         /// </summary>
-        /// <returns変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertStringToSettings()
+        public void ConvertStringToSettings()
         {
-            bool ret;
-            ushort workdata;  // 12bitレジスタのため、16bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 2進数データをもとに各設定データの変換をする
-                workdata = Convert.ToUInt16(BinString, 2);
+            // 2進数データをもとに各設定データの変換をする
+            workdata = Convert.ToUInt32(BinString, 2);
 
-                ConvertStringToSettingsDACSelectData(workdata);
-                ConvertStringToSettingsDACData(workdata);
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            ConvertStringToSettingsDACSelectData(workdata);
+            ConvertStringToSettingsDACData(workdata);
         }
 
         /// <summary>
         /// 設定数値→設定データ変換処理(DACセレクトデータ)
         /// </summary>
         /// <param name="inputData">設定数値</param>
-        private void ConvertStringToSettingsDACSelectData(ushort inputData)
+        private void ConvertStringToSettingsDACSelectData(uint inputData)
         {
-            ushort workDACSelectData = (ushort)(inputData & BitMask_DACSelectData);
+            uint workDACSelectData = inputData & BitMask_DACSelectData;
 
             if (workDACSelectData == DACSelectData_Bit_VOUT1)
             {
@@ -343,9 +247,9 @@ namespace IC_Register_Analyzer.Models
         /// 設定数値→設定データ変換処理(DACデータ)
         /// </summary>
         /// <param name="inputData">設定数値</param>
-        private void ConvertStringToSettingsDACData(ushort inputData)
+        private void ConvertStringToSettingsDACData(uint inputData)
         {
-            ushort workDacData = (ushort)(inputData & BitMask_DACData);
+            uint workDacData = inputData & BitMask_DACData;
             
             DACData = Convert.ToString(workDacData, 10);
         }
@@ -353,10 +257,9 @@ namespace IC_Register_Analyzer.Models
         /// <summary>
         /// 設定データ→設定数値変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertSettingsToString()
+        public void ConvertSettingsToString()
         {
-            ushort workdata = 0;  // 12bitレジスタのため、16bit用意する。
+            uint workdata = 0;  // 12bitレジスタのため、16bit用意する。
 
             // 各設定値を設定して、数値変換する
             if (DACSelectData == DACSelectData_VOUT1)
@@ -393,32 +296,16 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
-            try
-            {
-                if (Convert.ToUInt16(DACData, 10) <= DACData_Max_Threshold)
-                {
-                    workdata |= Convert.ToUInt16(DACData, 10);
-                }
-                else
-                {
-                    return (false);
-                }
-            }
-            catch
-            {
-                return (false);
-            }
+            workdata |= Convert.ToUInt32(DACData, 10);
 
             HexString = Convert.ToString(workdata, 16);
             HexString = HexString.PadLeft(HexString_MaxDigit, '0');
             DecString = Convert.ToString(workdata, 10);
             BinString = Convert.ToString(workdata, 2);
             BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-
-            return (true);
         }
     }
 }

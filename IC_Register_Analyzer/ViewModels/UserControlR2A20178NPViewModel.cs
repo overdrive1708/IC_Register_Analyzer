@@ -1,4 +1,6 @@
-﻿using Prism.Mvvm;
+﻿using System.Globalization;
+using System.Windows.Controls;
+using Prism.Mvvm;
 using Prism.Commands;
 using IC_Register_Analyzer.Models;
 
@@ -18,21 +20,6 @@ namespace IC_Register_Analyzer.ViewModels
             get { return _registerData; }
             set { SetProperty(ref _registerData, value); }
         }
-
-        /// <summary>
-        /// バインディングデータ：変換結果
-        /// </summary>
-        private string _convResult;
-        public string ConvResult
-        {
-            get { return _convResult; }
-            set { SetProperty(ref _convResult, value); }
-        }
-        private static readonly string ConvResult_OK = "変換成功";
-        private static readonly string ConvResult_NG = "変換失敗";
-        private static readonly string ConvResult_NG_InvalidHexString = "変換失敗(文字列が16進数ではないか、16ビットを超えています。)";
-        private static readonly string ConvResult_NG_InvalidDecString = "変換失敗(文字列が10進数ではないか、16ビットを超えています。)";
-        private static readonly string ConvResult_NG_InvalidBinString = "変換失敗(文字列が2進数ではないか、16ビットを超えています。)";
 
         /// <summary>
         /// バインディングコマンド：16進数文字列変化
@@ -76,23 +63,8 @@ namespace IC_Register_Analyzer.ViewModels
         /// </summary>
         private void ExecuteCommandChangeHexString()
         {
-            if (RegisterData.ConvertHexStringToOtherString() == true)
-            {
-                if (RegisterData.ConvertStringToSettings() == true)
-                {
-                    ConvResult = ConvResult_OK;
-                }
-                else
-                {
-                    ConvResult = ConvResult_NG;
-                    RegisterData.ClearSettings();
-                }
-            }
-            else
-            {
-                ConvResult = ConvResult_NG_InvalidHexString;
-                RegisterData.ClearSettings();
-            }
+            RegisterData.ConvertHexStringToOtherString();
+            RegisterData.ConvertStringToSettings();
         }
 
         /// <summary>
@@ -100,23 +72,8 @@ namespace IC_Register_Analyzer.ViewModels
         /// </summary>
         private void ExecuteCommandChangeDecString()
         {
-            if (RegisterData.ConvertDecStringToOtherString() == true)
-            {
-                if (RegisterData.ConvertStringToSettings() == true)
-                {
-                    ConvResult = ConvResult_OK;
-                }
-                else
-                {
-                    ConvResult = ConvResult_NG;
-                    RegisterData.ClearSettings();
-                }
-            }
-            else
-            {
-                ConvResult = ConvResult_NG_InvalidDecString;
-                RegisterData.ClearSettings();
-            }
+            RegisterData.ConvertDecStringToOtherString();
+            RegisterData.ConvertStringToSettings();
         }
 
         /// <summary>
@@ -124,23 +81,8 @@ namespace IC_Register_Analyzer.ViewModels
         /// </summary>
         private void ExecuteCommandChangeBinString()
         {
-            if (RegisterData.ConvertBinStringToOtherString() == true)
-            {
-                if (RegisterData.ConvertStringToSettings() == true)
-                {
-                    ConvResult = ConvResult_OK;
-                }
-                else
-                {
-                    ConvResult = ConvResult_NG;
-                    RegisterData.ClearSettings();
-                }
-            }
-            else
-            {
-                ConvResult = ConvResult_NG_InvalidBinString;
-                RegisterData.ClearSettings();
-            }
+            RegisterData.ConvertBinStringToOtherString();
+            RegisterData.ConvertStringToSettings();
         }
 
         /// <summary>
@@ -148,15 +90,77 @@ namespace IC_Register_Analyzer.ViewModels
         /// </summary>
         private void ExecuteCommandConvertSettingsToString()
         {
-            if (RegisterData.ConvertSettingsToString() == true)
+            RegisterData.ConvertSettingsToString();
+        }
+    }
+
+    /// <summary>
+    /// DACデータ文字列入力値検証クラス
+    /// </summary>
+    class DacDataValidationRules : ValidationRule
+    {
+        /// <summary>
+        /// 入力値検証処理
+        /// </summary>
+        /// <param name="value">入力値</param>
+        /// <param name="cultureInfo">カルチャー情報</param>
+        /// <returns>入力値検証結果</returns>
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            // 入力値がNULLの場合はNGを返す
+            if (null == value)
             {
-                ConvResult = ConvResult_OK;
+                return new ValidationResult(false, "値を入力してください。");
             }
-            else
+
+            // 入力値の文字列が空の場合はNGを返す
+            string str = value.ToString();
+            if (string.IsNullOrEmpty(str))
             {
-                ConvResult = ConvResult_NG;
-                RegisterData.ClearString();
+                return new ValidationResult(false, "値を入力してください。");
             }
+
+            if (!uint.TryParse(str, out uint ret))
+            {
+                return new ValidationResult(false, "値を入力してください。");
+            }
+            if ((0 > ret) || (255 < ret))
+            {
+                return new ValidationResult(false, "範囲内の値を入力してください。(0～255)");
+            }
+
+            // 上記のチェックにパスしたらOKを返す
+            return ValidationResult.ValidResult;
+        }
+    }
+
+    /// <summary>
+    /// DACセレクトデータ文字列入力値検証クラス
+    /// </summary>
+    class DacSelectDataValidationRules : ValidationRule
+    {
+        /// <summary>
+        /// 入力値検証処理
+        /// </summary>
+        /// <param name="value">入力値</param>
+        /// <param name="cultureInfo">カルチャー情報</param>
+        /// <returns>入力値検証結果</returns>
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            // 入力値がNULLの場合はNGを返す
+            if ((value.ToString().Equals(Model_Register_R2A20178NP.DACSelectData_Null)) == true)
+            {
+                return new ValidationResult(false, "有効値を選択してください。(VOUT1選択～VOUT8選択)");
+            }
+
+            // 入力値が「Don't care」の場合はNGを返す
+            if ((value.ToString().Equals(Model_Register_R2A20178NP.DACSelectData_DoNotCare)) == true)
+            {
+                return new ValidationResult(false, "選択してください。");
+            }
+
+            // 上記のチェックにパスしたらOKを返す
+            return ValidationResult.ValidResult;
         }
     }
 }
