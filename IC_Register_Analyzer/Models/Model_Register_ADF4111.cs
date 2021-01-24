@@ -46,6 +46,10 @@ namespace IC_Register_Analyzer.Models
             }
         }
         private static readonly string BinString_Init = "000000000000000000000000";
+        public static readonly string BinString_ReferenceInit = "000000000000000000000000";
+        public static readonly string BinString_ABInit = "000000000000001100000001";
+        public static readonly string BinString_FunctionInit = "000000000000000000000010";
+        public static readonly string BinString_InitialInit = "000000000000000000000011";
         protected static readonly int BinString_MaxDigit = 24;
 
         /// <summary>
@@ -342,6 +346,8 @@ namespace IC_Register_Analyzer.Models
                 C_R_Counter
             };
 
+            BinString = BinString_ReferenceInit;
+            ConvertBinStringToOtherString();
             ConvertStringToSettings();
         }
 
@@ -691,6 +697,8 @@ namespace IC_Register_Analyzer.Models
                 C_N_Counter
             };
 
+            BinString = BinString_ABInit;
+            ConvertBinStringToOtherString();
             ConvertStringToSettings();
         }
 
@@ -1336,6 +1344,8 @@ namespace IC_Register_Analyzer.Models
                 C_Function
             };
 
+            BinString = BinString_FunctionInit;
+            ConvertBinStringToOtherString();
             ConvertStringToSettings();
         }
 
@@ -2594,6 +2604,8 @@ namespace IC_Register_Analyzer.Models
                 C_Initialize
             };
 
+            BinString = BinString_InitialInit;
+            ConvertBinStringToOtherString();
             ConvertStringToSettings();
         }
 
