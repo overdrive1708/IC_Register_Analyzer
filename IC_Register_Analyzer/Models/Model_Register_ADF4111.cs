@@ -237,7 +237,6 @@ namespace IC_Register_Analyzer.Models
             get { return _dataR; }
             set { SetProperty(ref _dataR, value); }
         }
-        private static readonly string R_Null = string.Empty;
         private static readonly int R_Bit_Shift = 2;
         public static readonly uint R_Max_Threshold = 16383;
 
@@ -626,7 +625,6 @@ namespace IC_Register_Analyzer.Models
             get { return _dataB; }
             set { SetProperty(ref _dataB, value); }
         }
-        private static readonly string B_Null = string.Empty;
         private static readonly string B_Disallowed = "不許可";
         private static readonly int B_Bit_Shift = 8;
         private static readonly uint B_Disallowed_Threshold = 2;
@@ -642,7 +640,6 @@ namespace IC_Register_Analyzer.Models
             get { return _dataA; }
             set { SetProperty(ref _dataA, value); }
         }
-        private static readonly string A_Null = string.Empty;
         private static readonly int A_Bit_Shift = 2;
         public static readonly uint A_Max_Threshold = 63;
 
