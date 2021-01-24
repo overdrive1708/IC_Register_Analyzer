@@ -66,6 +66,200 @@
                     </Grid>
                 </StackPanel>
             </GroupBox>
+            <GroupBox Header="ビットマップ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="LightGray"/>
+                    <Border BorderBrush="Black" BorderThickness="0,1,1,1" Grid.Row="0" Grid.Column="2" Background="LightGray"/>
+                    <Border BorderBrush="Black" BorderThickness="0,1,1,1" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="13" Background="LightGray"/>
+                    <Border BorderBrush="Black" BorderThickness="0,1,1,1" Grid.Row="0" Grid.Column="16" Grid.ColumnSpan="6" Background="LightGray"/>
+                    <Border BorderBrush="Black" BorderThickness="0,1,1,1" Grid.Row="0" Grid.Column="22" Grid.ColumnSpan="2" Background="LightGray"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="予備" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="CP&#xa;ゲイン" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="13" Text="13ビットBカウンタ" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="16" Grid.ColumnSpan="6" Text="6ビットAカウンタ" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="22" Grid.ColumnSpan="2" Text="制御ビット" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+
+                    <Border BorderBrush="Black" BorderThickness="1,0,1,1" Grid.Row="1" Grid.Column="0"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="1"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="2"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="3"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="4"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="5"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="6"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="7"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="8"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="9"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="10"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="11"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="12"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="13"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="14"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="15"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="16"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="17"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="18"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="19"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="20"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="21"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="22"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="1" Grid.Column="23"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="DB23" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="DB22" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="DB21" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="3" Text="DB20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="4" Text="DB19" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="5" Text="DB18" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="6" Text="DB17" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="7" Text="DB16" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="8" Text="DB15" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="9" Text="DB14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="10" Text="DB13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="11" Text="DB12" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="12" Text="DB11" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="13" Text="DB10" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="14" Text="DB9" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="15" Text="DB8" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="16" Text="DB7" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="17" Text="DB6" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="18" Text="DB5" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="19" Text="DB4" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="20" Text="DB3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="21" Text="DB2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="22" Text="DB1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="23" Text="DB0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+
+                    <Border BorderBrush="Black" BorderThickness="1,0,1,1" Grid.Row="2" Grid.Column="0"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="1"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="2"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="3"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="4"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="5"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="6"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="7"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="8"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="9"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="10"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="11"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="12"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="13"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="14"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="15"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="16"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="17"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="18"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="19"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="20"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="21"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="22"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="2" Grid.Column="23"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="X" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="X" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="G1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="3" Text="B13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="4" Text="B12" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="5" Text="B11" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="6" Text="B10" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="7" Text="B9" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="8" Text="B8" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="9" Text="B7" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="10" Text="B6" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="11" Text="B5" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="12" Text="B4" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="13" Text="B3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="14" Text="B2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="15" Text="B1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="16" Text="A6" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="17" Text="A5" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="18" Text="A4" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="19" Text="A3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="20" Text="A2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="21" Text="A1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="22" Text="C2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="23" Text="C1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+
+                    <Border BorderBrush="Black" BorderThickness="1,0,1,1" Grid.Row="3" Grid.Column="0"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="1"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="2"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="3"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="4"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="5"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="6"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="7"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="8"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="9"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="10"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="11"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="12"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="13"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="14"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="15"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="16"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="17"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="18"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="19"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="20"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="21"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="22"/>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.Row="3" Grid.Column="23"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding RegisterData.BitMapData[23]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding RegisterData.BitMapData[22]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding RegisterData.BitMapData[21]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding RegisterData.BitMapData[20]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding RegisterData.BitMapData[19]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="5" Text="{Binding RegisterData.BitMapData[18]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="6" Text="{Binding RegisterData.BitMapData[17]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="7" Text="{Binding RegisterData.BitMapData[16]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="8" Text="{Binding RegisterData.BitMapData[15]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="9" Text="{Binding RegisterData.BitMapData[14]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="10" Text="{Binding RegisterData.BitMapData[13]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="11" Text="{Binding RegisterData.BitMapData[12]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="12" Text="{Binding RegisterData.BitMapData[11]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="13" Text="{Binding RegisterData.BitMapData[10]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="14" Text="{Binding RegisterData.BitMapData[9]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="15" Text="{Binding RegisterData.BitMapData[8]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="16" Text="{Binding RegisterData.BitMapData[7]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="17" Text="{Binding RegisterData.BitMapData[6]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="18" Text="{Binding RegisterData.BitMapData[5]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="19" Text="{Binding RegisterData.BitMapData[4]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="20" Text="{Binding RegisterData.BitMapData[3]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="21" Text="{Binding RegisterData.BitMapData[2]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="22" Text="{Binding RegisterData.BitMapData[1]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="23" Text="{Binding RegisterData.BitMapData[0]}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,5,5,5"></TextBlock>
+                </Grid>
+            </GroupBox>
             <GroupBox Header="設定データ">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
