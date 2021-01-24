@@ -135,6 +135,8 @@ namespace IC_Register_Analyzer.Models
                 DACSelectData_DoNotCare
             };
 
+            BinString = "100000000000";
+            ConvertBinStringToOtherString();
             ConvertStringToSettings();
         }
 
