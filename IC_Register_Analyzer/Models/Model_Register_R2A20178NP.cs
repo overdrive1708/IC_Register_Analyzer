@@ -273,7 +273,7 @@ namespace IC_Register_Analyzer.Models
         /// </summary>
         public void ConvertSettingsToString()
         {
-            uint workdata = 0;  // 12bitレジスタのため、16bit用意する。
+            uint workdata = 0;
 
             // 各設定値を設定して、数値変換する
             if (DACSelectData == DACSelectData_VOUT1)
