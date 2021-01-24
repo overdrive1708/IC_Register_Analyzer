@@ -135,7 +135,7 @@ namespace IC_Register_Analyzer.ViewModels
     }
 
     /// <summary>
-    /// DACセレクトデータ文字列入力値検証クラス
+    /// DACセレクトデータ入力値検証クラス
     /// </summary>
     class DacSelectDataValidationRules : ValidationRule
     {
