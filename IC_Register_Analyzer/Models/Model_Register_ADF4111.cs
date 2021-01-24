@@ -10,11 +10,6 @@ namespace IC_Register_Analyzer.Models
     public class Model_Register_ADF4111 : BindableBase
     {
         /// <summary>
-        /// 有効ビットマスク(24bit)
-        /// </summary>
-        private static readonly uint ValidBitMask = 0b111111111111111111111111;
-
-        /// <summary>
         /// 16進数文字列
         /// </summary>
         private string _hexString;
@@ -74,129 +69,52 @@ namespace IC_Register_Analyzer.Models
         }
 
         /// <summary>
-        /// 設定数値クリア処理
-        /// </summary>
-        public void ClearString()
-        {
-            HexString = string.Empty;
-            DecString = string.Empty;
-            BinString = string.Empty;
-        }
-
-        /// <summary>
         /// 16進数文字列→その他文字列変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertHexStringToOtherString()
+        public void ConvertHexStringToOtherString()
         {
-            bool ret;
-            uint workdata;  // 24bitレジスタのため、32bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 入力値が24bitを超えた場合は24bitMAXでクランプ
-                if (Convert.ToUInt32(HexString, 16) <= ValidBitMask)
-                {
-                    workdata = Convert.ToUInt32(HexString, 16);
-                }
-                else
-                {
-                    workdata = ValidBitMask;
-                    HexString = Convert.ToString(ValidBitMask, 16);
-                    HexString = HexString.PadLeft(HexString_MaxDigit, '0');
-                }
+            // 数値変換
+            workdata = Convert.ToUInt32(HexString, 16);
 
-                // 基数変換
-                DecString = Convert.ToString(workdata, 10);
-                BinString = Convert.ToString(workdata, 2);
-                BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-                
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            // 基数変換
+            DecString = Convert.ToString(workdata, 10);
+            BinString = Convert.ToString(workdata, 2);
+            BinString = BinString.PadLeft(BinString_MaxDigit, '0');
         }
 
         /// <summary>
         /// 10進数文字列→その他文字列変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertDecStringToOtherString()
+        public void ConvertDecStringToOtherString()
         {
-            bool ret;
-            uint workdata;  // 24bitレジスタのため、32bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 入力値が24bitを超えた場合は24bitMAXでクランプ
-                if (Convert.ToUInt32(DecString, 10) <= ValidBitMask)
-                {
-                    workdata = Convert.ToUInt32(DecString, 10);
-                }
-                else
-                {
-                    workdata = ValidBitMask;
-                    DecString = Convert.ToString(workdata, 10);
-                }
+            // 数値変換
+            workdata = Convert.ToUInt32(DecString, 10);
 
-                // 基数変換
-                HexString = Convert.ToString(workdata, 16);
-                HexString = HexString.PadLeft(HexString_MaxDigit, '0');
-                HexString = HexString.ToUpper();
-                BinString = Convert.ToString(workdata, 2);
-                BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            // 基数変換
+            HexString = Convert.ToString(workdata, 16);
+            HexString = HexString.PadLeft(HexString_MaxDigit, '0');
+            BinString = Convert.ToString(workdata, 2);
+            BinString = BinString.PadLeft(BinString_MaxDigit, '0');
         }
 
         /// <summary>
         /// 2進数文字列→その他文字列変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertBinStringToOtherString()
+        public void ConvertBinStringToOtherString()
         {
-            bool ret;
-            uint workdata;  // 24bitレジスタのため、32bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 入力値が24bitを超えた場合は24bitMAXでクランプ
-                if (Convert.ToUInt32(BinString, 2) <= ValidBitMask)
-                {
-                    workdata = Convert.ToUInt32(BinString, 2);
-                }
-                else
-                {
-                    workdata = ValidBitMask;
-                    BinString = Convert.ToString(workdata, 2);
-                    BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-                }
+            // 数値変換
+            workdata = Convert.ToUInt32(BinString, 2);
 
-                // 基数変換
-                HexString = Convert.ToString(workdata, 16);
-                HexString = HexString.PadLeft(HexString_MaxDigit, '0');
-                HexString = HexString.ToUpper();
-                DecString = Convert.ToString(workdata, 10);
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            // 基数変換
+            HexString = Convert.ToString(workdata, 16);
+            HexString = HexString.PadLeft(HexString_MaxDigit, '0');
+            DecString = Convert.ToString(workdata, 10);
         }
 
         /// <summary>
@@ -317,7 +235,7 @@ namespace IC_Register_Analyzer.Models
         }
         private static readonly string R_Null = string.Empty;
         private static readonly int R_Bit_Shift = 2;
-        private static readonly uint R_Max_Threshold = 16383;
+        public static readonly uint R_Max_Threshold = 16383;
 
         /// <summary>
         /// C
@@ -428,47 +346,21 @@ namespace IC_Register_Analyzer.Models
         }
 
         /// <summary>
-        /// 設定データクリア処理
-        /// </summary>
-        public void ClearSettings()
-        {
-            DLYSYNC = DLYSYNC_Null;
-            LDP = LDP_Null;
-            T = T_Null;
-            ABP = ABP_Null;
-            R = R_Null;
-            C = C_Null;
-        }
-
-        /// <summary>
         /// 設定数値→設定データ変換処理
         /// </summary>
-        /// <returns変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertStringToSettings()
+        public void ConvertStringToSettings()
         {
-            bool ret;
-            uint workdata;  // 24bitレジスタのため、32bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 2進数データをもとに各設定データの変換をする
-                workdata = Convert.ToUInt32(BinString, 2);
+            // 2進数データをもとに各設定データの変換をする
+            workdata = Convert.ToUInt32(BinString, 2);
 
-                ConvertStringToSettingsDLYSYNC(workdata);
-                ConvertStringToSettingsLDP(workdata);
-                ConvertStringToSettingsT(workdata);
-                ConvertStringToSettingsABP(workdata);
-                ConvertStringToSettingsR(workdata);
-                ConvertStringToSettingsC(workdata);
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            ConvertStringToSettingsDLYSYNC(workdata);
+            ConvertStringToSettingsLDP(workdata);
+            ConvertStringToSettingsT(workdata);
+            ConvertStringToSettingsABP(workdata);
+            ConvertStringToSettingsR(workdata);
+            ConvertStringToSettingsC(workdata);
         }
 
         /// <summary>
@@ -603,10 +495,9 @@ namespace IC_Register_Analyzer.Models
         /// <summary>
         /// 設定データ→設定数値変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertSettingsToString()
+        public void ConvertSettingsToString()
         {
-            uint workdata = 0;  // 24bitレジスタのため、32bit用意する。
+            uint workdata = 0;
 
             // 各設定値を設定して、数値変換する
             if (DLYSYNC == DLYSYNC_Normal1)
@@ -627,7 +518,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if(LDP == LDP_3Cycle)
@@ -640,7 +531,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (T == T_Normal)
@@ -649,7 +540,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (ABP == ABP_3_0_NS1)
@@ -670,32 +561,18 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
-            try
-            {
-                if (Convert.ToUInt32(R, 10) <= R_Max_Threshold)
-                {
-                    workdata |= (Convert.ToUInt32(R, 10) << R_Bit_Shift);
-                }
-                else
-                {
-                    return (false);
-                }
-            }
-            catch
-            {
-                return (false);
-            }
-
+            workdata |= (Convert.ToUInt32(R, 10) << R_Bit_Shift);
+            
             if (C == C_R_Counter)
             {
                 workdata |= C_Bit_R_Counter;
             }
             else
             {
-                return (false);
+                ;
             }
 
             HexString = Convert.ToString(workdata, 16);
@@ -703,8 +580,6 @@ namespace IC_Register_Analyzer.Models
             DecString = Convert.ToString(workdata, 10);
             BinString = Convert.ToString(workdata, 2);
             BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-
-            return (true);
         }
     }
 
@@ -749,8 +624,8 @@ namespace IC_Register_Analyzer.Models
         private static readonly string B_Disallowed = "不許可";
         private static readonly int B_Bit_Shift = 8;
         private static readonly uint B_Disallowed_Threshold = 2;
-        private static readonly uint B_Min_Threshold = 3;
-        private static readonly uint B_Max_Threshold = 8191;
+        public static readonly uint B_Min_Threshold = 3;
+        public static readonly uint B_Max_Threshold = 8191;
 
         /// <summary>
         /// A
@@ -763,7 +638,7 @@ namespace IC_Register_Analyzer.Models
         }
         private static readonly string A_Null = string.Empty;
         private static readonly int A_Bit_Shift = 2;
-        private static readonly uint A_Max_Threshold = 63;
+        public static readonly uint A_Max_Threshold = 63;
 
         /// <summary>
         /// C
@@ -820,43 +695,19 @@ namespace IC_Register_Analyzer.Models
         }
 
         /// <summary>
-        /// 設定データクリア処理
-        /// </summary>
-        public void ClearSettings()
-        {
-            G = G_Null;
-            B = B_Null;
-            A = A_Null;
-            C = C_Null;
-        }
-
-        /// <summary>
         /// 設定数値→設定データ変換処理
         /// </summary>
-        /// <returns変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertStringToSettings()
+        public void ConvertStringToSettings()
         {
-            bool ret;
-            uint workdata;  // 24bitレジスタのため、32bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 2進数データをもとに各設定データの変換をする
-                workdata = Convert.ToUInt32(BinString, 2);
+            // 2進数データをもとに各設定データの変換をする
+            workdata = Convert.ToUInt32(BinString, 2);
 
-                ConvertStringToSettingsG(workdata);
-                ConvertStringToSettingsB(workdata);
-                ConvertStringToSettingsA(workdata);
-                ConvertStringToSettingsC(workdata);
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            ConvertStringToSettingsG(workdata);
+            ConvertStringToSettingsB(workdata);
+            ConvertStringToSettingsA(workdata);
+            ConvertStringToSettingsC(workdata);
         }
 
         /// <summary>
@@ -931,10 +782,9 @@ namespace IC_Register_Analyzer.Models
         /// <summary>
         /// 設定データ→設定数値変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertSettingsToString()
+        public void ConvertSettingsToString()
         {
-            uint workdata = 0;  // 24bitレジスタのため、32bit用意する。
+            uint workdata = 0;
 
             // 各設定値を設定して、数値変換する
             if(G == G_CP_Current1)
@@ -947,40 +797,12 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
-            try
-            {
-                if((B_Min_Threshold <= Convert.ToUInt32(B, 10)) && (Convert.ToUInt32(B, 10) <= B_Max_Threshold))
-                {
-                    workdata |= (Convert.ToUInt32(B, 10) << B_Bit_Shift);
-                }
-                else
-                {
-                    return (false);
-                }
-            }
-            catch
-            {
-                return (false);
-            }
+            workdata |= (Convert.ToUInt32(B, 10) << B_Bit_Shift);
 
-            try
-            {
-                if (Convert.ToUInt32(A, 10) <= A_Max_Threshold)
-                {
-                    workdata |= (Convert.ToUInt32(A, 10) << A_Bit_Shift);
-                }
-                else
-                {
-                    return (false);
-                }
-            }
-            catch
-            {
-                return (false);
-            }
+            workdata |= (Convert.ToUInt32(A, 10) << A_Bit_Shift);
 
             if (C == C_N_Counter)
             {
@@ -988,7 +810,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             HexString = Convert.ToString(workdata, 16);
@@ -996,8 +818,6 @@ namespace IC_Register_Analyzer.Models
             DecString = Convert.ToString(workdata, 10);
             BinString = Convert.ToString(workdata, 2);
             BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-
-            return (true);
         }
     }
 
@@ -1520,59 +1340,27 @@ namespace IC_Register_Analyzer.Models
         }
 
         /// <summary>
-        /// 設定データクリア処理
-        /// </summary>
-        public void ClearSettings()
-        {
-            P = P_Null;
-            PD2 = PD2_Null;
-            CPI2 = CPI2_Null;
-            CPI1 = CPI1_Null;
-            TC = TC_Null;
-            F5F4 = F5F4_Null;
-            F3 = F3_Null;
-            F2 = F2_Null;
-            M = M_Null;
-            PD1 = PD1_Null;
-            F1 = F1_Null;
-            C = C_Null;
-        }
-
-        /// <summary>
         /// 設定数値→設定データ変換処理
         /// </summary>
-        /// <returns変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertStringToSettings()
+        public void ConvertStringToSettings()
         {
-            bool ret;
-            uint workdata;  // 24bitレジスタのため、32bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 2進数データをもとに各設定データの変換をする
-                workdata = Convert.ToUInt32(BinString, 2);
+            // 2進数データをもとに各設定データの変換をする
+            workdata = Convert.ToUInt32(BinString, 2);
 
-                ConvertStringToSettingsP(workdata);
-                ConvertStringToSettingsPD2(workdata);
-                ConvertStringToSettingsCPI2(workdata);
-                ConvertStringToSettingsCPI1(workdata);
-                ConvertStringToSettingsTC(workdata);
-                ConvertStringToSettingsF5F4(workdata);
-                ConvertStringToSettingsF3(workdata);
-                ConvertStringToSettingsF2(workdata);
-                ConvertStringToSettingsM(workdata);
-                ConvertStringToSettingsPD1(workdata);
-                ConvertStringToSettingsF1(workdata);
-                ConvertStringToSettingsC(workdata);
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            ConvertStringToSettingsP(workdata);
+            ConvertStringToSettingsPD2(workdata);
+            ConvertStringToSettingsCPI2(workdata);
+            ConvertStringToSettingsCPI1(workdata);
+            ConvertStringToSettingsTC(workdata);
+            ConvertStringToSettingsF5F4(workdata);
+            ConvertStringToSettingsF3(workdata);
+            ConvertStringToSettingsF2(workdata);
+            ConvertStringToSettingsM(workdata);
+            ConvertStringToSettingsPD1(workdata);
+            ConvertStringToSettingsF1(workdata);
+            ConvertStringToSettingsC(workdata);
         }
 
         /// <summary>
@@ -1982,10 +1770,9 @@ namespace IC_Register_Analyzer.Models
         /// <summary>
         /// 設定データ→設定数値変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertSettingsToString()
+        public void ConvertSettingsToString()
         {
-            uint workdata = 0;  // 24bitレジスタのため、32bit用意する。
+            uint workdata = 0;
 
             // 各設定値を設定して、数値変換する
             if(P == P_Prescaler_8_9)
@@ -2006,7 +1793,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if(PD2 == PD2_Async)
@@ -2019,7 +1806,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if(CPI2 == CPI2_000)
@@ -2056,7 +1843,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (CPI1 == CPI1_000)
@@ -2093,7 +1880,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
             
             if (TC == TC_0000)
@@ -2162,7 +1949,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (F5F4 == F5F4_Disable1)
@@ -2183,7 +1970,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if(F3 == F3_Normal)
@@ -2196,7 +1983,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if(F2 == F2_Negative)
@@ -2209,7 +1996,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if(M == M_ThreeStateOutput)
@@ -2246,7 +2033,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if(PD1 == PD1_Normal)
@@ -2259,7 +2046,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
             
             if(F1 == F1_Normal)
@@ -2272,7 +2059,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (C == C_Function)
@@ -2281,7 +2068,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             HexString = Convert.ToString(workdata, 16);
@@ -2289,8 +2076,6 @@ namespace IC_Register_Analyzer.Models
             DecString = Convert.ToString(workdata, 10);
             BinString = Convert.ToString(workdata, 2);
             BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-
-            return (true);
         }
     }
 
@@ -2813,59 +2598,27 @@ namespace IC_Register_Analyzer.Models
         }
 
         /// <summary>
-        /// 設定データクリア処理
-        /// </summary>
-        public void ClearSettings()
-        {
-            P = P_Null;
-            PD2 = PD2_Null;
-            CPI2 = CPI2_Null;
-            CPI1 = CPI1_Null;
-            TC = TC_Null;
-            F5F4 = F5F4_Null;
-            F3 = F3_Null;
-            F2 = F2_Null;
-            M = M_Null;
-            PD1 = PD1_Null;
-            F1 = F1_Null;
-            C = C_Null;
-        }
-
-        /// <summary>
         /// 設定数値→設定データ変換処理
         /// </summary>
-        /// <returns変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertStringToSettings()
+        public void ConvertStringToSettings()
         {
-            bool ret;
-            uint workdata;  // 24bitレジスタのため、32bit用意する。
+            uint workdata;
 
-            try
-            {
-                // 2進数データをもとに各設定データの変換をする
-                workdata = Convert.ToUInt32(BinString, 2);
+            // 2進数データをもとに各設定データの変換をする
+            workdata = Convert.ToUInt32(BinString, 2);
 
-                ConvertStringToSettingsP(workdata);
-                ConvertStringToSettingsPD2(workdata);
-                ConvertStringToSettingsCPI2(workdata);
-                ConvertStringToSettingsCPI1(workdata);
-                ConvertStringToSettingsTC(workdata);
-                ConvertStringToSettingsF5F4(workdata);
-                ConvertStringToSettingsF3(workdata);
-                ConvertStringToSettingsF2(workdata);
-                ConvertStringToSettingsM(workdata);
-                ConvertStringToSettingsPD1(workdata);
-                ConvertStringToSettingsF1(workdata);
-                ConvertStringToSettingsC(workdata);
-
-                ret = true;
-            }
-            catch
-            {
-                ret = false;
-            }
-
-            return (ret);
+            ConvertStringToSettingsP(workdata);
+            ConvertStringToSettingsPD2(workdata);
+            ConvertStringToSettingsCPI2(workdata);
+            ConvertStringToSettingsCPI1(workdata);
+            ConvertStringToSettingsTC(workdata);
+            ConvertStringToSettingsF5F4(workdata);
+            ConvertStringToSettingsF3(workdata);
+            ConvertStringToSettingsF2(workdata);
+            ConvertStringToSettingsM(workdata);
+            ConvertStringToSettingsPD1(workdata);
+            ConvertStringToSettingsF1(workdata);
+            ConvertStringToSettingsC(workdata);
         }
 
         /// <summary>
@@ -3275,10 +3028,9 @@ namespace IC_Register_Analyzer.Models
         /// <summary>
         /// 設定データ→設定数値変換処理
         /// </summary>
-        /// <returns>変換結果：成功(true)/失敗(false)</returns>
-        public bool ConvertSettingsToString()
+        public void ConvertSettingsToString()
         {
-            uint workdata = 0;  // 24bitレジスタのため、32bit用意する。
+            uint workdata = 0;
 
             // 各設定値を設定して、数値変換する
             if (P == P_Prescaler_8_9)
@@ -3299,7 +3051,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (PD2 == PD2_Async)
@@ -3312,7 +3064,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (CPI2 == CPI2_000)
@@ -3349,7 +3101,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (CPI1 == CPI1_000)
@@ -3386,7 +3138,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (TC == TC_0000)
@@ -3455,7 +3207,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (F5F4 == F5F4_Disable1)
@@ -3476,7 +3228,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (F3 == F3_Normal)
@@ -3489,7 +3241,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (F2 == F2_Negative)
@@ -3502,7 +3254,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (M == M_ThreeStateOutput)
@@ -3539,7 +3291,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (PD1 == PD1_Normal)
@@ -3552,7 +3304,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (F1 == F1_Normal)
@@ -3565,7 +3317,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             if (C == C_Initialize)
@@ -3574,7 +3326,7 @@ namespace IC_Register_Analyzer.Models
             }
             else
             {
-                return (false);
+                ;
             }
 
             HexString = Convert.ToString(workdata, 16);
@@ -3582,8 +3334,6 @@ namespace IC_Register_Analyzer.Models
             DecString = Convert.ToString(workdata, 10);
             BinString = Convert.ToString(workdata, 2);
             BinString = BinString.PadLeft(BinString_MaxDigit, '0');
-
-            return (true);
         }
     }
 }

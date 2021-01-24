@@ -2,8 +2,27 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:prism="http://prismlibrary.com/"             
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:utilities="clr-namespace:IC_Register_Analyzer.Utilities"
              prism:ViewModelLocator.AutoWireViewModel="True">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"/>
+                    <Setter Property="Background" Value="#ffeeff" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"/>
+                    <Setter Property="Background" Value="#ffeeff" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid Margin="10,0,10,0">
         <StackPanel>
             <GroupBox Header="設定数値">
@@ -25,8 +44,14 @@
                                    VerticalAlignment="Center"></TextBlock>
                         <TextBox Grid.Row="0" Grid.Column="1"
                                  Margin="5,5,10,5"
-                                 Width="300"
-                                 Text="{Binding RegisterData.HexString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                 Width="300">
+                            <TextBox.Text>
+                                <Binding Path="RegisterData.HexString" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <utilities:StringValidationRules BitWidth="24" StringBase = "Hexadecimal"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="KeyUp">
                                     <prism:InvokeCommandAction Command="{Binding CommandChangeHexString}"/>
@@ -40,8 +65,14 @@
                                    VerticalAlignment="Center"></TextBlock>
                         <TextBox Grid.Row="1" Grid.Column="1"
                                  Margin="5,5,10,5"
-                                 Width="300"
-                                 Text="{Binding RegisterData.DecString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                 Width="300">
+                            <TextBox.Text>
+                                <Binding Path="RegisterData.DecString" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <utilities:StringValidationRules BitWidth="24" StringBase = "Decimal"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="KeyUp">
                                     <prism:InvokeCommandAction Command="{Binding CommandChangeDecString}"/>
@@ -55,8 +86,14 @@
                                    VerticalAlignment="Center"></TextBlock>
                         <TextBox Grid.Row="2" Grid.Column="1"
                                  Margin="5,5,10,5"
-                                 Width="300"
-                                 Text="{Binding RegisterData.BinString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                 Width="300">
+                            <TextBox.Text>
+                                <Binding Path="RegisterData.BinString" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <utilities:StringValidationRules BitWidth="24" StringBase = "Binary"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="KeyUp">
                                     <prism:InvokeCommandAction Command="{Binding CommandChangeBinString}"/>
@@ -282,8 +319,14 @@
                         <TextBlock Text="プリスケーラ値"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListP}"
-                                  SelectedItem="{Binding RegisterData.P}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.P">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -298,8 +341,14 @@
                         <TextBlock Text="パワーダウン2"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListPD2}"
-                                  SelectedItem="{Binding RegisterData.PD2}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.PD2">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -314,8 +363,14 @@
                         <TextBlock Text="電流設定2"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListCPI2}"
-                                  SelectedItem="{Binding RegisterData.CPI2}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.CPI2">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -330,8 +385,14 @@
                         <TextBlock Text="電流設定1"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListCPI1}"
-                                  SelectedItem="{Binding RegisterData.CPI1}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.CPI1">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -346,8 +407,14 @@
                         <TextBlock Text="タイマ・カウンタ制御"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListTC}"
-                                  SelectedItem="{Binding RegisterData.TC}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.TC">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -362,8 +429,14 @@
                         <TextBlock Text="高速ロック・モード/高速ロック・イネーブル"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListF5F4}"
-                                  SelectedItem="{Binding RegisterData.F5F4}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.F5F4">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -378,8 +451,14 @@
                         <TextBlock Text="CPスリーステート"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListF3}"
-                                  SelectedItem="{Binding RegisterData.F3}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.F3">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -394,8 +473,14 @@
                         <TextBlock Text="PD極性"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListF2}"
-                                  SelectedItem="{Binding RegisterData.F2}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.F2">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -410,8 +495,14 @@
                         <TextBlock Text="MUXOUT制御"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListM}"
-                                  SelectedItem="{Binding RegisterData.M}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.M">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -426,8 +517,14 @@
                         <TextBlock Text="パワーダウン1"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListPD1}"
-                                  SelectedItem="{Binding RegisterData.PD1}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.PD1">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -442,8 +539,14 @@
                         <TextBlock Text="カウンタ・リセット"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListF1}"
-                                  SelectedItem="{Binding RegisterData.F1}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.F1">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -458,8 +561,14 @@
                         <TextBlock Text="制御ビット"
                                    VerticalAlignment="Center"></TextBlock>
                         <ComboBox ItemsSource="{Binding RegisterData.ListC}"
-                                  SelectedItem="{Binding RegisterData.C}"
                                   Margin="10,5,10,5">
+                            <ComboBox.SelectedItem>
+                                <Binding Path="RegisterData.C">
+                                    <Binding.ValidationRules>
+                                        <utilities:ComboBoxValidationRules/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="DropDownClosed">
                                     <prism:InvokeCommandAction Command="{Binding CommandConvertSettingsToString}"/>
@@ -472,10 +581,6 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="変換結果："></TextBlock>
-                <TextBlock Text="{Binding ConvResult}"></TextBlock>
-            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

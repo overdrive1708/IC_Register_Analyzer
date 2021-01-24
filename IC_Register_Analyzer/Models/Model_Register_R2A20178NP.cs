@@ -139,16 +139,6 @@ namespace IC_Register_Analyzer.Models
         }
 
         /// <summary>
-        /// 設定数値クリア処理
-        /// </summary>
-        public void ClearString()
-        {
-            HexString = string.Empty;
-            DecString = string.Empty;
-            BinString = string.Empty;
-        }
-
-        /// <summary>
         /// 16進数文字列→その他文字列変換処理
         /// </summary>
         public void ConvertHexStringToOtherString()

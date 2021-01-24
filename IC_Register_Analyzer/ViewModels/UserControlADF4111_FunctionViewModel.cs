@@ -20,21 +20,6 @@ namespace IC_Register_Analyzer.ViewModels
         }
 
         /// <summary>
-        /// バインディングデータ：変換結果
-        /// </summary>
-        private string _convResult;
-        public string ConvResult
-        {
-            get { return _convResult; }
-            set { SetProperty(ref _convResult, value); }
-        }
-        private static readonly string ConvResult_OK = "変換成功";
-        private static readonly string ConvResult_NG = "変換失敗";
-        private static readonly string ConvResult_NG_InvalidHexString = "変換失敗(文字列が16進数ではないか、32ビットを超えています。)";
-        private static readonly string ConvResult_NG_InvalidDecString = "変換失敗(文字列が10進数ではないか、32ビットを超えています。)";
-        private static readonly string ConvResult_NG_InvalidBinString = "変換失敗(文字列が2進数ではないか、32ビットを超えています。)";
-
-        /// <summary>
         /// バインディングコマンド：16進数文字列変化
         /// </summary>
         private DelegateCommand _commandChangeHexString;
@@ -76,23 +61,8 @@ namespace IC_Register_Analyzer.ViewModels
         /// </summary>
         private void ExecuteCommandChangeHexString()
         {
-            if (RegisterData.ConvertHexStringToOtherString() == true)
-            {
-                if (RegisterData.ConvertStringToSettings() == true)
-                {
-                    ConvResult = ConvResult_OK;
-                }
-                else
-                {
-                    ConvResult = ConvResult_NG;
-                    RegisterData.ClearSettings();
-                }
-            }
-            else
-            {
-                ConvResult = ConvResult_NG_InvalidHexString;
-                RegisterData.ClearSettings();
-            }
+            RegisterData.ConvertHexStringToOtherString();
+            RegisterData.ConvertStringToSettings();
         }
 
         /// <summary>
@@ -100,23 +70,8 @@ namespace IC_Register_Analyzer.ViewModels
         /// </summary>
         private void ExecuteCommandChangeDecString()
         {
-            if (RegisterData.ConvertDecStringToOtherString() == true)
-            {
-                if (RegisterData.ConvertStringToSettings() == true)
-                {
-                    ConvResult = ConvResult_OK;
-                }
-                else
-                {
-                    ConvResult = ConvResult_NG;
-                    RegisterData.ClearSettings();
-                }
-            }
-            else
-            {
-                ConvResult = ConvResult_NG_InvalidDecString;
-                RegisterData.ClearSettings();
-            }
+            RegisterData.ConvertDecStringToOtherString();
+            RegisterData.ConvertStringToSettings();
         }
 
         /// <summary>
@@ -124,23 +79,8 @@ namespace IC_Register_Analyzer.ViewModels
         /// </summary>
         private void ExecuteCommandChangeBinString()
         {
-            if (RegisterData.ConvertBinStringToOtherString() == true)
-            {
-                if (RegisterData.ConvertStringToSettings() == true)
-                {
-                    ConvResult = ConvResult_OK;
-                }
-                else
-                {
-                    ConvResult = ConvResult_NG;
-                    RegisterData.ClearSettings();
-                }
-            }
-            else
-            {
-                ConvResult = ConvResult_NG_InvalidBinString;
-                RegisterData.ClearSettings();
-            }
+            RegisterData.ConvertBinStringToOtherString();
+            RegisterData.ConvertStringToSettings();
         }
 
         /// <summary>
@@ -148,15 +88,7 @@ namespace IC_Register_Analyzer.ViewModels
         /// </summary>
         private void ExecuteCommandConvertSettingsToString()
         {
-            if (RegisterData.ConvertSettingsToString() == true)
-            {
-                ConvResult = ConvResult_OK;
-            }
-            else
-            {
-                ConvResult = ConvResult_NG;
-                RegisterData.ClearString();
-            }
+            RegisterData.ConvertSettingsToString();
         }
     }
 }
