@@ -6,24 +6,11 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:utilities="clr-namespace:IC_Register_Analyzer.Utilities"
     prism:ViewModelLocator.AutoWireViewModel="True">
+
     <UserControl.Resources>
-        <Style TargetType="TextBox">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
-                    <Setter Property="Background" Value="#ffeeff" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="ComboBox">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
-                    <Setter Property="Background" Value="#ffeeff" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <ResourceDictionary Source="/Styles/StyleDictionary.xaml" />
     </UserControl.Resources>
+
     <Grid Margin="10,0,10,0">
         <StackPanel>
             <GroupBox Header="設定数値">
@@ -42,14 +29,13 @@
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingNumericalValueTextBlockStyle}"
                             Text="16進数：0x" />
                         <TextBox
                             Grid.Row="0"
                             Grid.Column="1"
                             Width="300"
-                            Margin="5,5,10,5">
+                            Style="{StaticResource SettingNumericalValueTextBoxStyle}">
                             <TextBox.Text>
                                 <Binding
                                     Mode="TwoWay"
@@ -72,14 +58,13 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingNumericalValueTextBlockStyle}"
                             Text="10進数：0d" />
                         <TextBox
                             Grid.Row="1"
                             Grid.Column="1"
                             Width="300"
-                            Margin="5,5,10,5">
+                            Style="{StaticResource SettingNumericalValueTextBoxStyle}">
                             <TextBox.Text>
                                 <Binding
                                     Mode="TwoWay"
@@ -102,14 +87,13 @@
                         <TextBlock
                             Grid.Row="2"
                             Grid.Column="0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingNumericalValueTextBlockStyle}"
                             Text="2進数：0b" />
                         <TextBox
                             Grid.Row="2"
                             Grid.Column="1"
                             Width="300"
-                            Margin="5,5,10,5">
+                            Style="{StaticResource SettingNumericalValueTextBoxStyle}">
                             <TextBox.Text>
                                 <Binding
                                     Mode="TwoWay"
@@ -170,1049 +154,785 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="1,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header_Left}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="2"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="3"
                         Grid.ColumnSpan="3"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="6"
                         Grid.ColumnSpan="3"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="9"
                         Grid.ColumnSpan="4"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="13"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="14"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="15"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="16"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="17"
                         Grid.ColumnSpan="3"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="20"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="21"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
                     <Border
                         Grid.Row="0"
                         Grid.Column="22"
                         Grid.ColumnSpan="2"
-                        Background="LightGray"
-                        BorderBrush="Black"
-                        BorderThickness="0,1,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_Header}" />
+
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="プリスケーラ値" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="2"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="パワー&#xa;ダウン2" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="3"
                         Grid.ColumnSpan="3"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="電流設定2" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="6"
                         Grid.ColumnSpan="3"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="電流設定1" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="9"
                         Grid.ColumnSpan="4"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="タイマ・カウンタ制御" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="13"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="高速&#xa;ロック・&#xa;モード" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="14"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="高速&#xa;ロック・&#xa;イネーブル" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="15"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="CP&#xa;スリー&#xa;ステート" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="16"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="PD極性" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="17"
                         Grid.ColumnSpan="3"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="MUXOUT制御" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="20"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="パワー&#xa;ダウン1" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="21"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="カウンタ・&#xa;リセット" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="22"
                         Grid.ColumnSpan="2"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="制御ビット" />
 
                     <Border
                         Grid.Row="1"
                         Grid.Column="0"
-                        BorderBrush="Black"
-                        BorderThickness="1,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader_Left}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="1"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="2"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="3"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="4"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="5"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="6"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="7"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="8"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="9"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="10"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="11"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="12"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="13"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="14"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="15"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="16"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="17"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="18"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="19"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="20"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="21"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="22"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="23"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
+
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB23" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="1"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB22" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="2"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB21" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="3"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB20" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="4"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB19" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="5"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB18" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="6"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB17" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="7"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB16" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="8"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB15" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="9"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB14" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="10"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB13" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="11"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB12" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="12"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB11" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="13"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB10" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="14"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB9" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="15"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB8" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="16"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB7" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="17"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB6" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="18"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB5" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="19"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB4" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="20"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB3" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="21"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB2" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="22"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB1" />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="23"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="DB0" />
 
                     <Border
                         Grid.Row="2"
                         Grid.Column="0"
-                        BorderBrush="Black"
-                        BorderThickness="1,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader_Left}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="1"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="2"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="3"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="4"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="5"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="6"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="7"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="8"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="9"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="10"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="11"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="12"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="13"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="14"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="15"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="16"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="17"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="18"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="19"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="20"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="21"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="22"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="2"
                         Grid.Column="23"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
+
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="0"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="P2" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="1"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="P1" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="2"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="PD2" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="3"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="CPI6" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="4"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="CPI5" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="5"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="CPI4" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="6"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="CPI3" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="7"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="CPI2" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="8"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="CPI1" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="9"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="TC4" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="10"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="TC3" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="11"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="TC2" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="12"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="TC1" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="13"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="F5" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="14"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="F4" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="15"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="F3" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="16"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="F2" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="17"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="M3" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="18"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="M2" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="19"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="M1" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="20"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="PD1" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="21"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="F1" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="22"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="C2" />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="23"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="C1" />
 
                     <Border
                         Grid.Row="3"
                         Grid.Column="0"
-                        BorderBrush="Black"
-                        BorderThickness="1,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader_Left}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="1"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="2"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="3"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="4"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="5"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="6"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="7"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="8"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="9"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="10"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="11"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="12"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="13"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="14"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="15"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="16"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="17"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="18"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="19"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="20"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="21"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="22"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="3"
                         Grid.Column="23"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
+
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[23]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="1"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[22]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="2"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[21]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="3"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[20]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="4"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[19]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="5"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[18]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="6"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[17]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="7"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[16]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="8"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[15]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="9"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[14]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="10"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[13]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="11"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[12]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="12"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[11]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="13"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[10]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="14"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[9]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="15"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[8]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="16"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[7]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="17"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[6]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="18"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[5]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="19"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[4]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="20"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[3]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="21"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[2]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="22"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[1]}" />
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="23"
-                        Margin="5,5,5,5"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        Style="{StaticResource BitmapTextBlockStyle}"
                         Text="{Binding RegisterData.BitMapData[0]}" />
                 </Grid>
             </GroupBox>
@@ -1220,11 +940,11 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="プリスケーラ値" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListP}">
+                            ItemsSource="{Binding RegisterData.ListP}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.P">
                                     <Binding.ValidationRules>
@@ -1244,11 +964,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="パワーダウン2" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListPD2}">
+                            ItemsSource="{Binding RegisterData.ListPD2}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.PD2">
                                     <Binding.ValidationRules>
@@ -1268,11 +988,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="電流設定2" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListCPI2}">
+                            ItemsSource="{Binding RegisterData.ListCPI2}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.CPI2">
                                     <Binding.ValidationRules>
@@ -1292,11 +1012,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="電流設定1" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListCPI1}">
+                            ItemsSource="{Binding RegisterData.ListCPI1}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.CPI1">
                                     <Binding.ValidationRules>
@@ -1316,11 +1036,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="タイマ・カウンタ制御" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListTC}">
+                            ItemsSource="{Binding RegisterData.ListTC}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.TC">
                                     <Binding.ValidationRules>
@@ -1340,11 +1060,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="高速ロック・モード/高速ロック・イネーブル" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListF5F4}">
+                            ItemsSource="{Binding RegisterData.ListF5F4}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.F5F4">
                                     <Binding.ValidationRules>
@@ -1364,11 +1084,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="CPスリーステート" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListF3}">
+                            ItemsSource="{Binding RegisterData.ListF3}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.F3">
                                     <Binding.ValidationRules>
@@ -1388,11 +1108,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="PD極性" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListF2}">
+                            ItemsSource="{Binding RegisterData.ListF2}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.F2">
                                     <Binding.ValidationRules>
@@ -1412,11 +1132,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="MUXOUT制御" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListM}">
+                            ItemsSource="{Binding RegisterData.ListM}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.M">
                                     <Binding.ValidationRules>
@@ -1436,11 +1156,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="パワーダウン1" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListPD1}">
+                            ItemsSource="{Binding RegisterData.ListPD1}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.PD1">
                                     <Binding.ValidationRules>
@@ -1460,11 +1180,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="カウンタ・リセット" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListF1}">
+                            ItemsSource="{Binding RegisterData.ListF1}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.F1">
                                     <Binding.ValidationRules>
@@ -1484,11 +1204,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            VerticalAlignment="Center"
+                            Style="{StaticResource SettingDataTextBlockStyle}"
                             Text="制御ビット" />
                         <ComboBox
-                            Margin="10,5,10,5"
-                            ItemsSource="{Binding RegisterData.ListC}">
+                            ItemsSource="{Binding RegisterData.ListC}"
+                            Style="{StaticResource SettingDataComboBoxStyle}">
                             <ComboBox.SelectedItem>
                                 <Binding Path="RegisterData.C">
                                     <Binding.ValidationRules>
