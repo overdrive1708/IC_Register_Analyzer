@@ -165,12 +165,11 @@
                     <Border
                         Grid.Row="1"
                         Grid.Column="0"
-                        BorderBrush="Black"
-                        BorderThickness="1,0,1,1" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader_Left}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="1"
-                        Style="{StaticResource BitmapBorderStyle_NonHeader_Left}" />
+                        Style="{StaticResource BitmapBorderStyle_NonHeader}" />
                     <Border
                         Grid.Row="1"
                         Grid.Column="2"
